@@ -1,51 +1,71 @@
 import postifyMeLogo from "../../assets/logo/postifyMeLogo.png";
+import { useDispatch, useSelector } from "react-redux";
+import { setTheme } from "../../redux/slices/themeSlice/themeSlice";
+import { CustomNavbar } from "./NavbarStyle";
+import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const theme = useSelector((state) => state.theme.theme);
+
+  const handleDarkMode = () => {
+    dispatch(setTheme("dark"));
+    localStorage.setItem("postifyMeTheme", JSON.stringify("dark"));
+  };
+
+  const handleLightMode = () => {
+    dispatch(setTheme("light"));
+    localStorage.setItem("postifyMeTheme", JSON.stringify("light"));
+  };
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg">
-        <div className="container">
-          <a className="navbar-brand" href="#">
-            <img src={postifyMeLogo} alt="PostifyMe" className="img-fluid" width='150px'/>
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
-              </li>
-            </ul>
-            <form className="d-flex" role="search">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
+    <CustomNavbar className="navbar navbar-expand-lg sticky-top" theme={theme}>
+      <div className="container">
+        <Link to="/" className="navbar-brand">
+          <img
+            src={postifyMeLogo}
+            alt="PostifyMe"
+            className="img-fluid"
+            width="150px"
+          />
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <Link to="/" className="nav-link">
+                Home
+              </Link>
+            </li>
+          </ul>
+          <div className="d-flex">
+              {theme == "light" ? (
+                <BsFillSunFill
+                  size="1.2rem"
+                  onClick={handleDarkMode}
+                  cursor="pointer"
+                />
+              ) : (
+                <BsFillMoonFill
+                  size="1.2rem"
+                  onClick={handleLightMode}
+                  cursor="pointer"
+                />
+              )}
           </div>
         </div>
-      </nav>
-    </div>
+      </div>
+    </CustomNavbar>
   );
 };
 
