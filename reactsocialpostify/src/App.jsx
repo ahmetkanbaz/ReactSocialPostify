@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setTheme } from "./redux/slices/themeSlice/themeSlice";
 import { GlobalStyle } from "./GlobalStyle/GlobalStyle";
+import Footer from "./components/Footer/Footer";
 function App() {
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme.theme);
@@ -24,6 +25,7 @@ function App() {
       <GlobalStyle theme={theme} />
       <Navbar />
       <Router />
+      <Footer />
     </>
   );
 }
