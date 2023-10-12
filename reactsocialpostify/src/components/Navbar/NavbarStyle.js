@@ -13,5 +13,6 @@ export const CustomNavbar = styled.nav `
   transition: all .3s ease-in-out;
   .nav-link {
     color: ${({theme}) => changeColor4Theme(theme)};
+    font-size: 1.04rem;
   }
 `;

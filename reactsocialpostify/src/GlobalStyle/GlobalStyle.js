@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle `
   body {
     transition: all .3s ease-in-out;
     background-color: ${({theme}) => theme == 'light' ? '#F5F5F5' : '#333333'};
-    color: ${({theme}) => theme == 'light' ? '#000000' : '#FFFFFF'}
+    color: ${({theme}) => theme == 'light' ? '#000000' : '#FFFFFF'};
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
 `;

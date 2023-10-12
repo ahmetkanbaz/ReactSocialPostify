@@ -41,27 +41,37 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex gap-lg-4 gap-2">
             <li className="nav-item">
               <Link to="/" className="nav-link">
                 Home
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to="sss" className="nav-link">
+                Sıkça Sorulan Sorular
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="contact" className="nav-link">
+                İletişim
+              </Link>
+            </li>
           </ul>
           <div className="d-flex">
-              {theme == "light" ? (
-                <BsFillSunFill
-                  size="1.2rem"
-                  onClick={handleDarkMode}
-                  cursor="pointer"
-                />
-              ) : (
-                <BsFillMoonFill
-                  size="1.2rem"
-                  onClick={handleLightMode}
-                  cursor="pointer"
-                />
-              )}
+            {theme == "light" ? (
+              <BsFillSunFill
+                size="1.2rem"
+                onClick={handleDarkMode}
+                cursor="pointer"
+              />
+            ) : (
+              <BsFillMoonFill
+                size="1.2rem"
+                onClick={handleLightMode}
+                cursor="pointer"
+              />
+            )}
           </div>
         </div>
       </div>
